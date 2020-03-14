@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <title>Adicionar conteúdo</title>
+</head>
+<body>
+    <a href=""></a>
+    <form onsubmit="handleform();return false;" id="form">
+        <div class="inputwrap">
+            Matéria: <input type="text" name="title" placeholder="Nome da matéria">
+        </div>
+        <div class="inputwrap">
+            Material didático: <input type="text" name="materialLink" placeholder="link">
+        </div>
+        <div class="inputwrap">
+            Referências:<br/>
+            <ul id="referencia"></ul>
+            <button class="addItem" onclick="addReferenciaItem()" type="button">+</button>
+        </div>
+        <div class="inputwrap">
+            Exercícios:<br/>
+            <ul>
+                <li>
+                    <div class="inputwrap">
+                        Fixação:<br/>
+                        <ul id="fixacao"></ul>
+                        <button class="addItem" onclick="addFixItem()" type="button">+</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="inputwrap">
+                        Propostos:<br/>
+                        <ul id="proposto">
+                            <li><input type="text" placeholder="Título"><input type="text" placeholder="link"><button class="removeItem" onclick="removeItem(0)">-</button></li>
+                        </ul>
+                        <button class="addItem" onclick="addPropostoItem()" type="button">+</button>
+                    </div>
+                </li>
+                <li>
+                    <div class="inputwrap">
+                        Discursivos:<br/>
+                        <input type="text" name="discursivo" placeholder="link">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <input type="submit" value="Gerar arquivo">
+    </form>
+    <pre id="json">Arquivo</pre>
+</body>
+<script src="./index.js"></script>
+</html>

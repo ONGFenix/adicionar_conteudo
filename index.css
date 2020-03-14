@@ -1,0 +1,14 @@
+body{
+    display: flex;
+    align-items: stretch;
+}
+
+#json{
+    margin-left: 25px;
+    border: 2px solid black;
+    padding: 15px;
+}
+
+.inputwrap{
+    margin: 20px;
+}
