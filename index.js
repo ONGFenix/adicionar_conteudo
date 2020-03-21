@@ -38,31 +38,39 @@ function renderReferencias(){
 
 
         const li = document.createElement('li');
-        const input1 = document.createElement('input');
-        const input2 = document.createElement('input');
         const button = document.createElement('button');
 
-        input1.type = 'text';
-        input1.name = 'referenciaName'
-        input1.placeholder = 'Título';
-        input1.setAttribute('onblur', 'updateReferencia()');
-        let name = (referencia.name)? referencia.name:"";
-        input1.value = name;
+        [
+            {
+                label: 'Título',
+                property: 'name',
+                name: 'referenciaName'
+            },
+            {
+                label: 'Link',
+                property: 'link',
+                name: 'referenciaLink'
+            }
+        ].map(({ label, name, property }) => {
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.name = name;
+            input.placeholder = label;
+            input.addEventListener(
+              'change',
+              updateReferencia,
+              false
+            );
+            input.value = referencia[property] || '';
 
-        input2.type = 'text';
-        input2.name = 'referenciaLink'
-        input2.placeholder = 'link';
-        input1.setAttribute('onblur', 'updateReferencia()');
-        let link = (referencia.link)? referencia.link:"";
-        input2.value = link;
+            li.appendChild(input);
+
+        })
 
         button.className = 'removeItem'
         button.type = 'button';
         button.setAttribute('onclick', `removeReferenciaItem(${index})`);
         button.innerText = '-';
-
-        li.appendChild(input1);
-        li.appendChild(input2);
         li.appendChild(button);
         referenciaEl.appendChild(li);
     });
@@ -90,7 +98,7 @@ const updateReferencia = () =>{
     }else{
         referencias[0].update(form.referenciaName.value, form.referenciaLink.value);
     }
-    
+
     renderReferencias();
 }
 
@@ -156,7 +164,7 @@ const updateFixacao = () =>{
     }else{
         fixacao[0].update(form.fixName.value, form.fixLink.value);
     }
-    
+
     renderFixacao();
 }
 
@@ -222,7 +230,7 @@ const updateProposto = () =>{
     }else{
         propostos[0].update(form.propostoName.value, form.propostoLink.value);
     }
-    
+
     renderPropostos();
 }
 
